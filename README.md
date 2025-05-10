@@ -21,3 +21,9 @@
 - **MongoDB (com PyMongo)**
 - **Docker**
 - **Google Gemini API (IA)**
+  
+## Equipe
+- **Fábio Luis de Carvalho Terra**
+- **Sara Pacheco de Azevedo**
+- **Felipe Barroso**
+- **Pietro Branco**
