@@ -10,12 +10,29 @@ services:
       - mongodb_data:/data/db
 
   flaskapp:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: flaskapp
     ports:
       - "5000:5000"
     depends_on:
       - mongo
+
+  streamlit-frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: streamlit-frontend
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    depends_on:
+      - flaskapp
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ENV_FILE=.env
 
   mongo-express:
     image: mongo-express

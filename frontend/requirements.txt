@@ -1,0 +1,8 @@
+flask
+streamlit
+requests
+pymongo
+pyyaml
+google-generativeai
+python-dotenv
+matplotlib
