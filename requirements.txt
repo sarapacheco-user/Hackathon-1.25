@@ -1,3 +1,5 @@
 flask
 pymongo
 pyyaml
+requests
+streamlit

@@ -26,5 +26,10 @@ def validar():
 
     return jsonify({"valid": is_valid, "messages": messages})
 
+@app.route("/alimentos", methods=["GET"])
+def listar_alimentos():
+    registros = list(collection.find({}, {"_id": 0}))
+    return jsonify(registros)
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
