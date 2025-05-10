@@ -1,8 +1,13 @@
 FROM python:3.10-slim
 
 WORKDIR /app
-COPY app/ /app
 
-RUN pip install --upgrade pip && pip install -r requirements.txt
+# Copia tudo, inclusive o requirements.txt
+COPY . .
 
-CMD ["python", "app.py"]
+# Instala as dependências
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 5000
+
+CMD ["python", "app/app.py"]

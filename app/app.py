@@ -1,19 +1,30 @@
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
+from validator.engine import validate
 from pymongo import MongoClient
+import os
+from datetime import datetime
 
 app = Flask(__name__)
+
+# MongoDB URI (ajustado ao serviço do Docker)
 client = MongoClient("mongodb://mongo:27017/")
-db = client["meubanco"]
-collection = db["usuarios"]
+db = client["hackathon"]
+collection = db["avaliacoes"]
 
-@app.route("/")
-def home():
-    return jsonify({"msg": "API Flask rodando com MongoDB"})
+@app.route("/validate", methods=["POST"])
+def validar():
+    data = request.get_json()
+    is_valid, messages = validate(data)
 
-@app.route("/usuarios")
-def listar_usuarios():
-    usuarios = list(collection.find({}, {"_id": 0}))
-    return jsonify(usuarios)
+    # Armazena no Mongo
+    collection.insert_one({
+        "input": data,
+        "valid": is_valid,
+        "messages": messages,
+        "timestamp": datetime.utcnow()
+    })
+
+    return jsonify({"valid": is_valid, "messages": messages})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
