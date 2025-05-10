@@ -1,0 +1,1 @@
+from gemini import analisar_como_inspetor

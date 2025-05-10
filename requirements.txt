@@ -1,6 +1,6 @@
 flask
+streamlit
+requests
 pymongo
 pyyaml
-requests
-streamlit
 google-generativeai

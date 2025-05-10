@@ -1,6 +1,11 @@
 import streamlit as st
 import requests
 from gemini.gemini_chat import analisar_como_inspetor
+import time
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 st.set_page_config(page_title="Validação de Doações", layout="centered")
 st.title("Formulário de Viabilidade para Doação de Alimentos")
@@ -67,8 +72,19 @@ if enviar:
     st.markdown("---")
     st.subheader("Parecer Técnico da IA (Inspetor ANVISA)")
 
-    explicacao = analisar_como_inspetor(payload)
-    st.markdown(explicacao)
+    with st.spinner("Consultando parecer da IA (Gemini)..."):
+        resposta = analisar_como_inspetor(payload)
+
+        placeholder = st.empty()
+        parcial = ""
+
+        for c in resposta:
+            parcial += c
+            placeholder.markdown(parcial + "▌")
+            time.sleep(0.01)  # ajuste para deixar mais rápido ou mais lento
+
+        placeholder.markdown(parcial)
+
 
     if res.status_code == 200:
         resposta = res.json()
