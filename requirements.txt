@@ -4,3 +4,4 @@ requests
 pymongo
 pyyaml
 google-generativeai
+python-dotenv
