@@ -17,7 +17,7 @@ if st.button("Validar"):
     if has_mold is not None:
         payload["has_mold"] = has_mold == "true"
 
-    res = requests.post("http://localhost:5000/validate", json=payload)
+    res = requests.post("http://127.0.0.1:5000/validate", json=payload)
     if res.status_code == 200:
         resposta = res.json()
         st.subheader("Resultado")
