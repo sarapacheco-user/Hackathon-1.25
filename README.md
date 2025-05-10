@@ -71,7 +71,7 @@ Acessar o link https://aistudio.google.com/app/apikey e fazer login com sua cont
 No canto superior direito da tela clicar no botão Criar chave de API
 Criar um arquivo .env com a chave de API gerada pelo gemini
 
-echo "suaAPI-KEY " > .env
+echo "GEMINI_API_KEY=suaAPI-KEY " > .env
 ```
 Rodar o frontend do sistema
 ```
