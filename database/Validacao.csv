@@ -1,0 +1,4 @@
+"_id","ProprioParaConsumo","PrazoDeValidade","EmbalagemIntegra","TipoProduto","Temperatura","Contaminacao"
+"ObjectId(""681f0a00c9d3d02488acdeff"")",true,true,true,"Quente",60,false
+"ObjectId(""681f0a00c9d3d02488acdf00"")",true,true,true,"Resfriado",4,false
+"ObjectId(""681f0a00c9d3d02488acdf01"")",true,true,true,"Congelado",-18,false
