@@ -32,4 +32,53 @@
 - **Felipe Barroso**
 - **Pietro Branco**
 
-.
+## Como executar o projeto
+
+Clonar o repositório do GitHub
+
+git clone https://github.com/Felipebc2/Hackathon-1.25.git
+cd Hackathon-1.25
+
+Fazer o download dos requirements
+
+pip install -r requirements.txt
+
+Subir os containers do Docker
+
+docker compose up -d --build
+
+Criar o arquivo da API KEY
+
+Acessar o link https://aistudio.google.com/app/apikey e fazer login com sua conta google
+No canto superior direito da tela clicar no botão Criar chave de API
+Criar um arquivo .env com a chave de API gerada pelo gemini
+Clonar o repositório do GitHub
+```
+git clone https://github.com/Felipebc2/Hackathon-1.25.git
+cd Hackathon-1.25
+```
+Fazer o download dos requirements
+```
+pip install -r requirements.txt
+```
+Subir os containers do Docker
+```
+docker compose up -d --build
+```
+Criar o arquivo da API KEY
+```
+Acessar o link https://aistudio.google.com/app/apikey e fazer login com sua conta google
+No canto superior direito da tela clicar no botão Criar chave de API
+Criar um arquivo .env com a chave de API gerada pelo gemini
+
+echo "suaAPI-KEY " > .env
+```
+Rodar o frontend do sistema
+```
+streamlit run ./frontend/frontend.py
+```
+echo "suaAPI-KEY " > .env
+
+Rodar o frontend do sistema
+
+streamlit run ./frontend/frontend.py
