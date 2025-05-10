@@ -1,7 +1,7 @@
 # Hackathon-1.25
 
 ## Documentação referente ao software e processos realizados durante o desenvolvimento 
-<p><a href="https://github.com/Felipebc2/Hackathon-1.25.git">Documentação</a></p>
+<p><a href="https://docs.google.com/document/d/13Mq4_E7nHVVTti5fNme2gb14C4IDbfMn1a73ul8kFL0/edit?tab=t.0#heading=h.rgn9e3azl2ay">Documentação</a></p>
 
 # 🥗 ShareBite – Combate ao Desperdício de Alimentos com Tecnologia e Incentivo Social
 
