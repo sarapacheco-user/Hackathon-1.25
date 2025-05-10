@@ -35,7 +35,14 @@ with st.form("formViabilidadeDoacao"):
 
 if enviar:
     # Tradução do tipo para API
-    tipo_api = "refeicao_pronta"  # todas tratadas como "refeição pronta" por enquanto
+    tipo_api = tipoComida.lower()  # transforma "Quente" → "quente"
+    if tipo_api == "quente":
+        tipo_api = "refeicao_pronta"
+    elif tipo_api == "resfriada":
+        tipo_api = "resfriada"
+    elif tipo_api == "congelada":
+        tipo_api = "congelada"
+
 
     # Conversão de tempo
     if grandezaTempo == "horas":
@@ -49,13 +56,11 @@ if enviar:
         "days_since_preparation": dias
     }
 
-    try:
-        res = requests.post("http://localhost:5000/validate", json=payload)
-        if res.status_code == 200:
-            resposta = res.json()
-            st.success("Resultado da Validação:")
-            st.json(resposta)
-        else:
-            st.error("Erro: Não foi possível validar os dados.")
-    except requests.exceptions.ConnectionError:
-        st.error("Erro ao se conectar com o servidor Flask.")
+    res = requests.post("http://localhost:5000/validate", json=payload)
+
+    if res.status_code == 200:
+        resposta = res.json()
+        st.success("Resultado da Validação:")
+        st.json(resposta)
+    else:
+        st.error(f"Erro {res.status_code}: {res.text}")

@@ -1,0 +1,29 @@
+refeicao_pronta:
+  - field: "temperature"
+    operator: ">="
+    value: 60
+    error_message: "Refeição quente deve estar acima de 60°C"
+  - field: "days_since_preparation"
+    operator: "<="
+    value: 0.25
+    error_message: "Refeição quente deve ser consumida em até 6h (0.25 dias)"
+
+resfriada:
+  - field: "temperature"
+    operator: "<="
+    value: 5
+    error_message: "Comida resfriada deve estar até 5°C"
+  - field: "days_since_preparation"
+    operator: "<="
+    value: 5
+    error_message: "Comida resfriada deve ter no máximo 5 dias desde o preparo"
+
+congelada:
+  - field: "temperature"
+    operator: "<="
+    value: -18
+    error_message: "Comida congelada deve estar a -18°C ou menos"
+  - field: "days_since_preparation"
+    operator: "<="
+    value: 90
+    error_message: "Congelados devem ter até 90 dias desde o preparo"

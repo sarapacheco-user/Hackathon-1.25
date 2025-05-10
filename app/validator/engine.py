@@ -3,8 +3,12 @@ import os
 
 def load_rules():
     path = os.path.join(os.path.dirname(__file__), "rules.yaml")
-    with open(path, "r", encoding="utf-8") as file:
-        return yaml.safe_load(file)
+    if not os.path.exists(path):
+        print(f"[ERRO] Arquivo rules.yaml não encontrado em: {path}")
+        return {}
+    with open(path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
 
 def validate(payload):
     tipo = payload.get("type")
