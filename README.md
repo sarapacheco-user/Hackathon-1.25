@@ -77,7 +77,7 @@ Rodar o frontend do sistema
 ```
 streamlit run ./frontend/frontend.py
 ```
-echo "suaAPI-KEY " > .env
+echo "GEMINI_API_KEY=suaAPI-KEY " > .env
 
 Rodar o frontend do sistema
 
