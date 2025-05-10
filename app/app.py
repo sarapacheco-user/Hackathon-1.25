@@ -3,8 +3,6 @@ from validator.engine import validate
 from pymongo import MongoClient
 from datetime import datetime
 
-app = Flask(__name__)
-
 # Conexão com o MongoDB
 client = MongoClient("mongodb://mongo:27017/")
 db = client["hackathon"]

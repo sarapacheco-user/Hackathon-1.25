@@ -6,6 +6,9 @@ from gemini.gemini_chat import analisar_como_inspetor
 import time
 import os
 import sys
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Caminhos
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -23,45 +26,44 @@ with aba_form:
     st.header("Formulário de Viabilidade para Doação")
 
     with st.form("formViabilidadeDoacao"):
-        tipoComida = st.selectbox("Tipo do alimento", ["Quente", "Resfriada", "Congelada"])
-        temperatura = st.number_input("Temperatura atual do alimento (°C)", step=1)
-        tempo = st.number_input("Tempo desde o preparo", min_value=0, step=1)
+        tipo_alimento = st.selectbox("Tipo do alimento", ["Quente", "Resfriada", "Congelada"])
+        temperatura_atual = st.number_input("Temperatura atual do alimento (°C)", step=1)
+        tempo_preparo = st.number_input("Tempo desde o preparo", min_value=0, step=1)
         unidade_tempo = st.selectbox("Unidade de tempo", ["horas", "dias"])
-        is_lactente = st.checkbox("Este alimento é destinado a lactentes?")
-
         prazo_validade = st.checkbox("Está dentro do prazo de validade?")
-        temperatura_conservacao = st.checkbox("Temperatura adequada para conservação?")
-        temperatura_congelado = st.checkbox("Se congelado, está a -18°C ou menos?")
+        temperatura_adequada = st.checkbox("Temperatura adequada para conservação?")
         embalagem_integra = st.checkbox("A embalagem está íntegra ou com danos seguros?")
-        integridade_visual = st.checkbox("O alimento está visualmente íntegro?")
-        seguranca_sanitaria = st.checkbox("Não está contaminado ou estragado?")
-        propriedades_nutricionais = st.checkbox("As propriedades nutricionais estão preservadas?")
-        tempo_preparo_apto = st.checkbox("Foi preparado e armazenada em menos de 6h após confeccionado?")
-        autorizacao_lactente = st.checkbox("Tem autorização sanitária?") if is_lactente else False
+        alimento_integro = st.checkbox("O alimento está visualmente íntegro?")
+        sem_contaminacao = st.checkbox("Não está contaminado ou estragado?")
+        nutricional_preservada = st.checkbox("As propriedades nutricionais estão preservadas?")
+        preparo_armazenado_apto = st.checkbox("Foi preparado e armazenado em menos de 6h após confeccionado?")
+        eh_para_lactentes = st.checkbox("Este alimento é destinado a lactentes?")
 
         enviar = st.form_submit_button("Enviar")
 
     if enviar:
-        tipo_api = tipoComida.lower()
+        tipo_api = tipo_alimento.lower()
         if tipo_api == "quente":
             tipo_api = "refeicao_pronta"
 
-        dias = round(tempo / 24, 2) if unidade_tempo == "horas" else tempo
+        dias = round(tempo_preparo / 24, 2) if unidade_tempo == "horas" else tempo_preparo
 
         payload = {
-            "type": tipo_api,
-            "temperature": temperatura,
-            "days_since_preparation": dias,
+            "tipo_alimento": tipo_alimento,
+            "temperatura_atual": temperatura_atual,
+            "tempo_preparo": dias,
+            "unidade_tempo": unidade_tempo,
             "prazo_validade": prazo_validade,
-            "temperatura_conservacao": temperatura_conservacao,
-            "temperatura_congelado": temperatura_congelado,
+            "temperatura_adequada": temperatura_adequada,
             "embalagem_integra": embalagem_integra,
-            "integridade_visual": integridade_visual,
-            "seguranca_sanitaria": seguranca_sanitaria,
-            "propriedades_nutricionais": propriedades_nutricionais,
-            "tempo_preparo_apto": tempo_preparo_apto,
-            "autorizacao_lactente": autorizacao_lactente
+            "alimento_integro": alimento_integro,
+            "sem_contaminacao": sem_contaminacao,
+            "nutricional_preservada": nutricional_preservada,
+            "preparo_armazenado_apto": preparo_armazenado_apto,
+            "eh_para_lactentes": eh_para_lactentes,
         }
+
+        print("Payload enviado:", payload)
 
         try:
             res = requests.post("http://localhost:5000/validate", json=payload)
