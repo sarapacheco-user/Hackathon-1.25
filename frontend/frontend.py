@@ -29,7 +29,6 @@ with aba_form:
         unidade_tempo = st.selectbox("Unidade de tempo", ["horas", "dias"])
         is_lactente = st.checkbox("Este alimento é destinado a lactentes?")
 
-        st.markdown("### Regras Técnicas da ANVISA")
         prazo_validade = st.checkbox("Está dentro do prazo de validade?")
         temperatura_conservacao = st.checkbox("Temperatura adequada para conservação?")
         temperatura_congelado = st.checkbox("Se congelado, está a -18°C ou menos?")
@@ -37,7 +36,7 @@ with aba_form:
         integridade_visual = st.checkbox("O alimento está visualmente íntegro?")
         seguranca_sanitaria = st.checkbox("Não está contaminado ou estragado?")
         propriedades_nutricionais = st.checkbox("As propriedades nutricionais estão preservadas?")
-        tempo_preparo_apto = st.checkbox("Foi preparado há menos de 6h e armazenado corretamente?")
+        tempo_preparo_apto = st.checkbox("Foi preparado e armazenada em menos de 6h após confeccionado?")
         autorizacao_lactente = st.checkbox("Tem autorização sanitária?") if is_lactente else False
 
         enviar = st.form_submit_button("Enviar")
