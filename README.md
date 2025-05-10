@@ -15,5 +15,6 @@
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Principais tecnologias usadas
+
 
