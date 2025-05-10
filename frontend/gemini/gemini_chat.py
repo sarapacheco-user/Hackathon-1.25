@@ -9,21 +9,16 @@ load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
 
 if not api_key:
-    raise ValueError("GEMINI_API_KEY não encontrado no .env.")
+    raise ValueError("GEMINI_API_KEY não encontrado no .env")
 
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel("models/gemini-1.5-flash")
 
-# Conexão com MongoDB (ajuste conforme necessário: localhost ou mongo)
-MONGO_URI = "mongodb://mongo:27017/"
-client = MongoClient(MONGO_URI)
+client = MongoClient("mongodb://localhost:27017/")
 db = client["hackathon"]
 
 @st.cache_data(ttl=600)
 def carregar_dados_mongo():
-    """
-    Carrega e cacheia os dados das coleções por 10 minutos.
-    """
     return {
         "empresas": list(db["empresas"].find({}, {"_id": 0})),
         "produtos": list(db["produtos"].find({}, {"_id": 0})),
@@ -31,28 +26,31 @@ def carregar_dados_mongo():
     }
 
 def analisar_como_inspetor(form_data):
-    """
-    Usa Gemini para gerar um parecer técnico com base no template.
+    tipo = form_data["type"]
+    temp = form_data["temperature"]
+    dias = form_data["days_since_preparation"]
 
-    Args:
-        form_data (dict): Dados do formulário (tipo, temperatura, dias, etc.)
+    dados = carregar_dados_mongo()
 
-    Returns:
-        str: Parecer técnico gerado pela IA.
-    """
-    # Carrega o template do prompt
-    caminho_prompt = os.path.join(os.path.dirname(__file__), "prompt_template.txt")
-    with open(caminho_prompt, "r", encoding="utf-8") as f:
-        prompt_base = f.read()
+    exemplos_empresas = dados["empresas"][:2]
+    exemplos_produtos = dados["produtos"][:2]
+    exemplos_validacao = dados["validacao"][:2]
 
-    # Insere os dados do form no template
-    prompt_final = prompt_base + f"""
+    from pathlib import Path
+    current_dir = Path(__file__).resolve().parent
+    template_path = current_dir / "prompt_template.txt"
 
-Dados recebidos:
-- Tipo: {form_data['type']}
-- Temperatura: {form_data['temperature']}°C
-- Dias desde o preparo: {form_data['days_since_preparation']}
-"""
+    with open(template_path, "r", encoding="utf-8") as f:
+      template = f.read()
 
-    resposta = model.generate_content(prompt_final)
+    prompt = template.format(
+        tipo=tipo,
+        temp=temp,
+        dias=dias,
+        produtos=exemplos_produtos,
+        validacoes=exemplos_validacao,
+        empresas=exemplos_empresas
+    )
+
+    resposta = model.generate_content(prompt)
     return resposta.text
