@@ -17,4 +17,7 @@
 
 ## 📁 Principais tecnologias usadas
 
-
+- **Python 3 + Flask
+- **MongoDB (com PyMongo)
+- **Docker
+- **Google Gemini API (IA)
