@@ -1,3 +1,0 @@
-{"_id":{"$oid":"681f0a00c9d3d02488acdeff"},"ProprioParaConsumo":true,"PrazoDeValidade":true,"EmbalagemIntegra":true,"TipoProduto":"Quente","Temperatura":60,"Contaminacao":false}
-{"_id":{"$oid":"681f0a00c9d3d02488acdf00"},"ProprioParaConsumo":true,"PrazoDeValidade":true,"EmbalagemIntegra":true,"TipoProduto":"Resfriado","Temperatura":4,"Contaminacao":false}
-{"_id":{"$oid":"681f0a00c9d3d02488acdf01"},"ProprioParaConsumo":true,"PrazoDeValidade":true,"EmbalagemIntegra":true,"TipoProduto":"Congelado","Temperatura":-18,"Contaminacao":false}
