@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+from gemini.gemini_chat import analisar_como_inspetor
 
 st.set_page_config(page_title="Validação de Doações", layout="centered")
 st.title("Formulário de Viabilidade para Doação de Alimentos")
@@ -57,6 +58,17 @@ if enviar:
     }
 
     res = requests.post("http://localhost:5000/validate", json=payload)
+
+    resposta = res.json()
+    st.success("Resultado da Validação por Regras Fixas:")
+    st.json(resposta)
+
+    # Envia o mesmo payload para o Gemini
+    st.markdown("---")
+    st.subheader("Parecer Técnico da IA (Inspetor ANVISA)")
+
+    explicacao = analisar_como_inspetor(payload)
+    st.markdown(explicacao)
 
     if res.status_code == 200:
         resposta = res.json()
