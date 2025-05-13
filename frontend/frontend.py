@@ -6,9 +6,11 @@ from gemini.gemini_chat import analisar_como_inspetor
 import time
 import os
 import sys
-from dotenv import load_dotenv
 
-load_dotenv()
+### Configuração do Streamlit com .env e APIKEY diretamente sendo chamada no código
+### Se você quiser usar o .env, descomente as linhas
+    #from dotenv import load_dotenv
+    #load_dotenv()
 
 # Caminhos
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))

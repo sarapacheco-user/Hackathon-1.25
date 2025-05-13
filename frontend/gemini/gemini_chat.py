@@ -1,5 +1,3 @@
-import os
-from dotenv import load_dotenv
 from pymongo import MongoClient
 import google.generativeai as genai
 import streamlit as st
@@ -8,6 +6,9 @@ import streamlit as st
 ### Configuração do Streamlit com .env e APIKEY diretamente sendo chamada no código
 ### Se você quiser usar o .env, descomente as linhas abaixo e coloque no .env a API.
 
+    # import dotenv
+    # import os
+    # from dotenv import load_dotenv
     # Carrega variáveis do ambiente (.env)
     #load_dotenv()
     #api_key = os.getenv("GEMINI_API_KEY")
