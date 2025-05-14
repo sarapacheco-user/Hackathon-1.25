@@ -17,20 +17,12 @@ infoProdutos = "./database/Produtos.csv"
 st.set_page_config(page_title="dashboard", layout="centered")
 st.title("Análise Estatística")
 
-st.markdown("""
-    Abaixo estão gráficos e estatísticas dos alimentos do banco de dados.
-
-""")
-
 with st.sidebar:
     st.markdown(
         '[![Open in GitHub](https://github.com/codespaces/badge.svg)](https://github.com/Felipebc2/Hackathon-1.25)',
         unsafe_allow_html=True
     )
     st.image("frontend/shareBiteLogo.png", caption=" ", use_container_width=True)
-    
-
-st.header("Dashboard para visualização de estatísticas")
 
 try:
     df = pd.read_csv(infoProdutos)
