@@ -8,7 +8,7 @@ docker compose up -d --build
 
 # Criar o arquivo da API KEY
 
-echo "GEMINI_API_KEY=yourapikey > .env
+echo "GEMINI_API_KEY=yourapikey" > .env
 
 # Rodar o frontend do sistema
 
