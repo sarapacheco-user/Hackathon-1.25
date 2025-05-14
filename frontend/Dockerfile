@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 
 # Instala as dependências
-RUN pip install --no-cache-dir -r frontend/requirements.txt
+RUN pip install -r frontend/requirements.txt
 
 # Expondo a porta padrão do Streamlit
 EXPOSE 8501

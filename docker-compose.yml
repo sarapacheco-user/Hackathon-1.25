@@ -30,9 +30,10 @@ services:
       - .:/app
     depends_on:
       - flaskapp
+    env_file:
+      - .env
     environment:
       - PYTHONUNBUFFERED=1
-      - ENV_FILE=.env
 
   mongo-express:
     image: mongo-express

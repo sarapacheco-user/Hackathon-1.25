@@ -2,23 +2,23 @@ from pymongo import MongoClient
 import google.generativeai as genai
 import streamlit as st
 
-
+# ---------------< Gemini >----------------
 ### Configuração do Streamlit com .env e APIKEY diretamente sendo chamada no código
-### Se você quiser usar o .env, descomente as linhas abaixo e coloque no .env a API.
 
-    # import dotenv
-    # import os
-    # from dotenv import load_dotenv
-    # Carrega variáveis do ambiente (.env)
-    #load_dotenv()
-    #api_key = os.getenv("GEMINI_API_KEY")
+import os
+from dotenv import load_dotenv
+# Carrega variáveis do ambiente (.env)
+load_dotenv()
+api_key = os.getenv("GEMINI_API_KEY")
 
-    #if not api_key:
-    #    raise ValueError("GEMINI_API_KEY não encontrado no .env")
+if not api_key:
+    raise ValueError("GEMINI_API_KEY não encontrado no .env")
 
-    #genai.configure(api_key=api_key)
+genai.configure(api_key=api_key)
 
 model = genai.GenerativeModel("models/gemini-1.5-flash")
+
+# ---------------< MongoDB >----------------
 
 client = MongoClient("mongodb://localhost:27017/")
 db = client["hackathon"]
