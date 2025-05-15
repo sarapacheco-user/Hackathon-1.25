@@ -1,6 +1,6 @@
-# Ignora arquivos de ambiente
+# Ignores environment files
 .env
 
-# Ignora pastas do Python
+# Ignores these Python folders
 __pycache__/
 *.pyc
