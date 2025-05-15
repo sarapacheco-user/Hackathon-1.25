@@ -12,11 +12,11 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 infoProdutos = "./database/Produtos.csv"
 
 # CONFIGURAÇÃO
-st.set_page_config(page_title="Validação de Doações", layout="centered")
-st.title("Validação de Doações de Alimentos")
+st.set_page_config(page_title="Donation Validation", layout="centered")
+st.title("Validations of Foods for Donation")
 
 # ========== FORMULÁRIO ==========
-st.header("Formulário de Viabilidade para Doação")
+st.header("Forms for Validations of Foods for Donation based on Brazil's Laws")
 
 with st.form("formViabilidadeDoacao"):
     tipo_alimento = st.selectbox("Tipo do alimento", ["Quente", "Resfriada", "Congelada"])
