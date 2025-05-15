@@ -2,13 +2,13 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# Copia só o requirements.txt primeiro
+# Starts off by only copying the requirements.txt
 COPY requirements.txt .
 
-# Instala as dependências, aproveitando o cache se o requirements.txt não mudou
+# Installs dependencies, also upon cache if requirements.txt has not changed
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Agora copia o restante dos arquivos
+# Copies the rest of the files 
 COPY . .
 
 EXPOSE 5000
