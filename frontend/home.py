@@ -1,25 +1,25 @@
 import streamlit as st
 
-# Define page layout
-st.set_page_config(page_title="App Principal", layout="centered")
+# Defines page layout
+st.set_page_config(page_title="Main App", layout="centered")
 
 # Sidebar setup
 with st.sidebar:
-    st.title("Navegação do App")
-    st.markdown("Este é o aplicativo de validação de doações e visualização estatística do excedente")
+    st.title("App Navegation")
+    st.markdown("This application validates donations and exposes statistics on the excedent food")
     st.image("frontend/shareBiteLogo.png", caption=" ", use_container_width=True)
     
 # Main content of the page
-st.title("Bem-vindo ao ShareBite!")
+st.title("Welcome to ShareBite!")
 
 st.markdown("""
-    Este aplicativo foi desenvolvido para ajudar na validação de doações de alimentos e na visualização de dados sobre a quantidade de produtos disponíveis para doação.
-    
-    Navegue usando o menu lateral para acessar as páginas de **Formulário de Viabilidade** ou **Dashboard de Estatísticas**.
-            
-    **Quando usar o Dashboard?** Use o dashboard quando quiser visualizar os dados dos alimentos que sobraram.
-            
-    **Quando usar o Formulário?** Use o formulário quando quiser adicionar alimentos ao banco de dados, verficando se ele é validado pela ANVISA.
+    This application was developed to assist in the validation of food donations and in visualizing data on the quantity of products available for donation.
+
+    Navigate using the side menu to access the Feasibility Form or the Statistics Dashboard pages.
+
+    **When to use the Dashboard?** Use the dashboard when you want to view data on leftover food items.
+
+    **When to use the Form?** Use the form when you want to add food items to the database, verifying whether they are validated by ANVISA.
             
 """)
 
