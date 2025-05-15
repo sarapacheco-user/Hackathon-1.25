@@ -1,7 +1,7 @@
 # Hackathon-1.25
 ## Documentation related to the software and processes carried out during development
 <p><a href="https://docs.google.com/document/d/13Mq4_E7nHVVTti5fNme2gb14C4IDbfMn1a73ul8kFL0/edit?tab=t.0#heading=h.rgn9e3azl2ay">Documentation</a></p>
-# 🥗 ShareBite – Fighting Food Waste with Technology and Social Incentives
+## 🥗 ShareBite – Fighting Food Waste with Technology and Social Incentives
 **ShareBite**  is an application developed during the fifth edition of the IDP hackathon, aimed at fighting food waste through product validation based on ANVISA’s safety criteria and encouraging donations by companies and restaurants. The system includes a Flask backend, MongoDB database, and integration with artificial intelligence.
 
 ## 🚀 Features
