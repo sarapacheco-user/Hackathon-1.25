@@ -2,14 +2,14 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# Copia tudo
+# Copies everything
 COPY . .
 
-# Instala as dependências
+# Installs the dependencies
 RUN pip install -r frontend/requirements.txt
 
-# Expondo a porta padrão do Streamlit
+# Exposes Streamlit's standard
 EXPOSE 8501
 
-# Comando para iniciar a aplicação Streamlit
-CMD ["streamlit", "run", "frontend/frontend.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Command to start the Streamlit application
+CMD ["streamlit", "run", "frontend/home.py", "--server.port=8501", "--server.address=0.0.0.0"]
